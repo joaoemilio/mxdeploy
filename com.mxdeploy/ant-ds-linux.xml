@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="com.wds.java"> 
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+	<property name="ds.dir" value="${user.home}/java/projects/DeploymentSuite" />
+	<property name="ds.dir.lib" value="${ds.dir}/lib" />
+	
+	<target name="main">
+		<delete dir="${ds.dir}" />
+		<mkdir dir="${ds.dir}" />
+	</target>
+
+	<target name="copy" depends="main">
+		<copy todir="${ds.dir}/">
+			<fileset dir="${user.home}/java/projects/curr" />
+		</copy> 
+
+		<jar destfile="${ds.dir.lib}/com.ds.swt.jar">
+			<manifest>
+				<attribute name="Main-Class" value="com.ds.launcher.Launcher" />
+			</manifest>
+			<fileset dir="bin" />
+		</jar>
+
+		<delete file="${ds.dir}/Converter_bat_to_exe.exe" />
+		<delete file="${ds.dir}/DeploymentSuite.exe" />
+		<delete file="${ds.dir}/DeploymentSuite.bat" />
+		<delete file="${ds.dir}/DeploymentSuite.ico" />
+		<chmod file="${ds.dir}/DeploymentSuite.sh" perm="777"/>
+	</target>
+
+	<target name="com.wds.java" depends="copy">
+		<ant dir="../com.wds.java"  
+			 antfile="ant-com.wds.java-linux.xml" 
+			 target="create_run_jar" />
+	</target>
+
+
+</project>
