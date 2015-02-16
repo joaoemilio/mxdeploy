@@ -1,6 +1,6 @@
 package com.mxscript;
 
-import com.mxssh.SSHServiceNew;
+import com.mxssh.SSHClient;
 
 public class ConnectionPool {
 	private Thread threads[];
@@ -109,7 +109,7 @@ public class ConnectionPool {
 				public void run() {
 	
 					try {
-						SSHServiceNew sshService = new SSHServiceNew(); 
+						SSHClient sshService = new SSHClient(); 
 						sshService.connect(hostname, username, password);
 						//add(sshService);
 					} catch (Exception ex) {

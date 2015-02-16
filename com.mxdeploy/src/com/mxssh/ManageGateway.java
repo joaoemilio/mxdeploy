@@ -392,41 +392,5 @@ public class ManageGateway {
 		
 	}
 
-	public boolean checkStatus(String username, String password) {
-
-		SSHConsoleService ssh = new SSHConsoleService();
-		try {
-			ssh.connect("localhost", username, password);
-
-			String PIDs = ssh
-					.executeCommand("ps -ef | grep -v grep | grep NumberOfPasswordPrompts=1 | awk '{ print $2 }' | xargs");
-			StringTokenizer token = new StringTokenizer(PIDs, " ");
-			if (token.countTokens() >= 2) {
-				isStarted = true;
-				return true;
-			}
-
-		} catch (UnknownHostException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (SocketException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (JSchException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} finally {
-			ssh.disconnect();
-		}
-
-		isStarted = false;
-		return false;
-	}
 
 }

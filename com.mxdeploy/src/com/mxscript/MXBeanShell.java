@@ -5,17 +5,11 @@ import java.net.InetAddress;
 
 import org.apache.log4j.Logger;
 
-import com.mxssh.OSService;
 import com.mxssh.SCPClient;
-import com.mxssh.SSHConsoleService;
-import com.mxssh.SSHFileSystemService;
 
 public abstract class MXBeanShell {
 
 	protected Logger logger = Logger.getRootLogger();
-	protected SSHConsoleService sshClient = new SSHConsoleService(); 
-	protected SSHFileSystemService fsService = new SSHFileSystemService(sshClient);
-	protected OSService osService = new OSService(sshClient);
 	protected SCPClient scp = new SCPClient();
 	protected String hostName = null;
 	protected String ipAddress = null;
@@ -33,22 +27,7 @@ public abstract class MXBeanShell {
 		this.userName = userName;
 		this.password = password;
 	}
-	
-	public MXBSDomain start(String hostName, String userName, String password, MXBSDomain domain) throws MXBeanShellException {
-		try{
-			initialize(hostName, userName, password);
-			this.ipAddress = getIPAddress(hostName);
-			return execute(domain);
-		} catch (IOException ioe) {
-			logger.debug(ioe.getMessage(), ioe);
-			throw new MXBeanShellException(ioe);
-		} finally {	
-			if(sshClient != null && sshClient.isConnected()){
-				sshClient.disconnect();
-			}
-		}
-	}
-	
+		
 	public abstract MXBSDomain execute(MXBSDomain domain) throws MXBeanShellException;
 
 	protected String getIPAddress(String hostname) throws IOException {

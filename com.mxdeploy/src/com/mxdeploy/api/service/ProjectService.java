@@ -117,8 +117,7 @@ public class ProjectService {
 		Project project = null;
 		;
 		try {
-			project = (Project) xstream.fromXML(new FileReader(Database.getProjectPath()
-					+ "/" + projectName + "/project.xml"));
+			project = (Project) xstream.fromXML(new FileReader(Database.getProjectPath()+ "/" + projectName + "/project.xml"));
 			
 			loadBeanShellXML(project);
 		} catch (FileNotFoundException e) {

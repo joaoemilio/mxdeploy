@@ -1,12 +1,7 @@
 package com.mxdeploy.swt.explorer.popup;
 
-import java.io.File;
-
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.TreeItem;
 
-import com.mxdeploy.api.domain.Database;
-import com.mxdeploy.api.domain.Project;
 import com.mxdeploy.images.Constant;
 import com.mxdeploy.plugin.explorer.ChildItemMenuExplorerPlugin;
 import com.mxdeploy.plugin.menu.MenuBT;
@@ -20,10 +15,8 @@ import com.mxdeploy.swt.explorer.popup.event.EditProjectEventHandler;
 import com.mxdeploy.swt.explorer.popup.event.EditServerEventHandler;
 import com.mxdeploy.swt.explorer.popup.event.NewProjectEventHandler;
 import com.mxdeploy.swt.explorer.popup.event.NewServerEventHandler;
-import com.mxdeploy.swt.explorer.popup.event.NewWorkbookEventHandler;
 import com.mxdeploy.swt.explorer.popup.event.RemoveProjectEventHandler;
 import com.mxdeploy.swt.explorer.popup.event.RemoveServerEventHandler;
-import com.mxdeploy.swt.explorer.popup.event.RemoveWorkbookEventHandler;
 
 public class PopupFactory {  
 	
@@ -84,16 +77,7 @@ public class PopupFactory {
 		newServerSubMenu.setSWT_Style(SWT.NONE);
 		
 		menuBt.addSubMenu(newServerSubMenu);	
-		
-//		SubMenu newLinkSubMenu = new SubMenu();
-//		newLinkSubMenu.setText("New Link");
-//		newLinkSubMenu.setImage(Constant.IMAGE_BROWSER);
-//		newLinkSubMenu.setEventHandler(new NewLinkEventHandler());
-//		newLinkSubMenu.setCreateSeparatorBefore(true);
-//		newLinkSubMenu.setSWT_Style(SWT.NONE);
-//		
-//		menuBt.addSubMenu(newLinkSubMenu);
-		
+				
 		ChildItemMenuExplorerPlugin.addSubItemMenuExplorer(menuBt);
 		
 		SubMenu closeProjectSubMenu = new SubMenu();
@@ -114,26 +98,7 @@ public class PopupFactory {
 		SubMenu workbookSubMenu = new SubMenu();
 		workbookSubMenu.setImage(Constant.IMAGE_WEBSPHERE);
 		workbookSubMenu.setCreateSeparatorBefore(true);
-		workbookSubMenu.setSWT_Style(SWT.NONE);
-		
-		TreeItem treeItem = MainShell.getControlPanelHelper().getTreeItemProjectSelected(MainShell.getControlPanelHelper().getMyProjectTreeItemSelected());
-		if( treeItem!=null && treeItem.getData()!=null && treeItem.getData() instanceof Project ){
-			Project project = (Project)treeItem.getData();
-			String PROJECT_PATH = Database.getProjectPath()+"/"+project.getAlias();
-			
-			File f = new File(PROJECT_PATH+"/"+Database.WORKBOOK_FILE_NAME);
-			if( !f.exists() ){
-				workbookSubMenu.setText("New Workbook");
-				workbookSubMenu.setEventHandler(new NewWorkbookEventHandler());
-			} else {
-				workbookSubMenu.setText("Remove Workbook");
-				workbookSubMenu.setEventHandler(new RemoveWorkbookEventHandler());
-			}
-		}
-		
-		
-		menuBt.addSubMenu(workbookSubMenu);
-		
+		workbookSubMenu.setSWT_Style(SWT.NONE);		
 		
 		return menuBt;
 	        

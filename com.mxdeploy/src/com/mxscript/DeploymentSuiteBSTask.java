@@ -12,16 +12,16 @@ import bsh.Parser;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.ProxySOCKS5;
 import com.mxscript.swt.event.LauncherBeanShellEvent;
-import com.mxssh.CannotSudoException;
 import com.mxssh.SCPClient;
-import com.mxssh.SSHServiceNew;
+import com.mxssh.SSHClient;
+import com.mxssh.exception.CannotSudoException;
 
 public abstract class DeploymentSuiteBSTask extends Thread {
 	
 	private int indexItem = 0;
 	private LauncherBeanShellEvent event = null;
 	private String serverName;
-	private SSHServiceNew sshClient;
+	private SSHClient sshClient;
 	private Interpreter bsh = null;
 	private int sessionTimeOut = 0;
 	private int connectionTimeOut = 0;
@@ -55,7 +55,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 	}	
 	
 	public void connect(String hostname, String username, String password) throws InterruptedException, MXBeanShellException{
-		sshClient = new SSHServiceNew();
+		sshClient = new SSHClient();
 		
         if( proxySOCKS5 != null){
         	sshClient.setProxySOCKS5(proxySOCKS5);
@@ -98,7 +98,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 	}
 
 	public void connectPK(String hostname, String username, String privateKeyPath) throws InterruptedException, MXBeanShellException{
-		sshClient = new SSHServiceNew();
+		sshClient = new SSHClient();
 		
         if( proxySOCKS5 != null){
         	sshClient.setProxySOCKS5(proxySOCKS5);
@@ -204,7 +204,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 	}
 	
 	public void getFile(String sourceDir, String sourceFile, String destDir) throws MXBeanShellException{
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(getServerName(), getUsername(), getPassword());
 			SCPClient scp = new SCPClient();
@@ -228,7 +228,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 	}
 	
 	public void getFile(String username, String password, String sourceDir, String sourceFile, String destDir) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(getServerName(), username, password);
 			SCPClient scp = new SCPClient();
@@ -248,7 +248,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 	}
 	
 	public void getFile(String hostname, String username, String password, String sourceDir, String sourceFile, String destDir) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(hostname, username, password);
 			SCPClient scp = new SCPClient();
@@ -268,7 +268,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 	}	
 	
 	public void uploadFile(String sourceFile, String destFile) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(getServerName(), getUsername(), getPassword());
 			SCPClient scp = new SCPClient();
@@ -288,7 +288,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 	}	
 	
 	public void uploadFile(String username, String password, String sourceFile, String destFile) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(getServerName(), username, password);
 			SCPClient scp = new SCPClient();
@@ -308,7 +308,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 	}		
 	
 	public void uploadFile(String hostname, String username, String password, String sourceFile, String destFile) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(hostname, username, password);
 			SCPClient scp = new SCPClient();
@@ -415,7 +415,7 @@ public abstract class DeploymentSuiteBSTask extends Thread {
 		this.event = event;
 	}
 
-	public SSHServiceNew getSSHClient() {
+	public SSHClient getSSHClient() {
 		return this.sshClient;
 	}
 

@@ -23,8 +23,7 @@ public class Project implements Cloneable, Serializable, Comparable<Project> {
     private String  dpe;
     private String  isCritical;
     private List<Server> servers = new ArrayList<Server>();
-    //private WorkbookProject workbookProject = null;
-    private List<Url> urls = new ArrayList<Url>();
+
     private List<BeanShell> beanShells = new ArrayList<BeanShell>();
     
     public List<BeanShell> getBeanShells() {
@@ -118,26 +117,8 @@ public class Project implements Cloneable, Serializable, Comparable<Project> {
 	/**
 	 * @param servers the servers to set
 	 */
-	public void addUrl(Url url) {
-		this.urls.add(url);
-	}
-
-	/**
-	 * @return the servers
-	 */
-	public List<Url> getUrls() {
-		return urls;
-	}
-
-	/**
-	 * @param servers the servers to set
-	 */
 	public void addServer(Server server) {
 		this.servers.add(server);
-	}
-	
-	public void clearUrls(){
-		this.urls = new ArrayList<Url>();
 	}
 	
 	/** 

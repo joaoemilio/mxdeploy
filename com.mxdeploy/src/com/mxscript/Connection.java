@@ -1,11 +1,11 @@
 package com.mxscript;
 
-import com.mxssh.SSHServiceNew;
+import com.mxssh.SSHClient;
 
 public class Connection {
 	private ConnectionPool pool;
 	private int index =0;
-	private SSHServiceNew sshServiceNew = null;
+	private SSHClient sshServiceNew = null;
 	private boolean isAvailable = true;
 	
 	public synchronized boolean isAvailable() {
@@ -16,7 +16,7 @@ public class Connection {
 		this.isAvailable = isAvailable;
 	} 
 
-	public Connection(ConnectionPool pool,int index, SSHServiceNew sshServiceNew){
+	public Connection(ConnectionPool pool,int index, SSHClient sshServiceNew){
 		this.pool = pool;
 		this.index = index;
 		this.sshServiceNew = sshServiceNew;
@@ -40,9 +40,9 @@ public class Connection {
 	public void setPool(ConnectionPool pool) {
 		this.pool = pool;
 	}
-	protected SSHServiceNew getSshServiceNew() {
+	protected SSHClient getSshServiceNew() {
 		if(sshServiceNew==null){
-		   sshServiceNew = new SSHServiceNew();
+		   sshServiceNew = new SSHClient();
 		}
 		return sshServiceNew;
 	}

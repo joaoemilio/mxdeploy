@@ -24,9 +24,9 @@ import com.mxdeploy.api.domain.Property;
 import com.mxdeploy.swt.MainShell;
 import com.mxscript.logger.Logger;
 import com.mxscript.swt.event.LauncherBeanShellEvent;
-import com.mxssh.CannotSudoException;
 import com.mxssh.SCPClient;
-import com.mxssh.SSHServiceNew;
+import com.mxssh.SSHClient;
+import com.mxssh.exception.CannotSudoException;
 import com.mxterminal.swt.util.TerminalDomainRule;
 import com.mxterminal.swt.util.TerminalProperty;
 
@@ -277,11 +277,11 @@ public class Task extends DeploymentSuiteBSTask {
 	}
 	
 	public void getFile(String sourceDir, String sourceFile, String destDir) throws MXBeanShellException {
-		SSHServiceNew ssh =  getSSHClient();
+		SSHClient ssh =  getSSHClient();
 		boolean isNew = false;
 		try {
 			if( ssh == null ){
-				ssh = new SSHServiceNew();
+				ssh = new SSHClient();
 				isNew = true;
 				ssh.connect(getServerName(), getUsername(), getPassword());
 			}
@@ -310,7 +310,7 @@ public class Task extends DeploymentSuiteBSTask {
 	}
 	
 	public void getFile(String username, String password, String sourceDir, String sourceFile, String destDir) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(getServerName(), username, password);
 			SCPClient scp = new SCPClient();
@@ -334,7 +334,7 @@ public class Task extends DeploymentSuiteBSTask {
 	}
 	
 	public void getFile(String hostname, String username, String password, String sourceDir, String sourceFile, String destDir) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(hostname, username, password);
 			SCPClient scp = new SCPClient();
@@ -358,11 +358,11 @@ public class Task extends DeploymentSuiteBSTask {
 	}	
 	
 	public void uploadFile(String sourceFile, String destFile) throws MXBeanShellException {
-		SSHServiceNew ssh =  getSSHClient();
+		SSHClient ssh =  getSSHClient();
 		boolean isNew = false;
 		try {
 			if( ssh == null ){
-				ssh = new SSHServiceNew();
+				ssh = new SSHClient();
 				isNew = true;
 				ssh.connect(getServerName(), getUsername(), getPassword());
 			}			
@@ -388,7 +388,7 @@ public class Task extends DeploymentSuiteBSTask {
 	}	
 	
 	public void uploadFile(String username, String password, String sourceFile, String destFile) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(getServerName(), username, password);
 			SCPClient scp = new SCPClient();
@@ -412,7 +412,7 @@ public class Task extends DeploymentSuiteBSTask {
 	}		
 	
 	public void uploadFile(String hostname, String username, String password, String sourceFile, String destFile) throws MXBeanShellException {
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		try {
 			ssh.connect(hostname, username, password);
 			SCPClient scp = new SCPClient();

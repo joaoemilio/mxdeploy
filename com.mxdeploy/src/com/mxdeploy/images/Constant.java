@@ -56,7 +56,6 @@ public class Constant {
 	public static final Image UNCHECKED = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/icon_unchecked.png"));
 	
 	public static final Image IMAGE_JAVA = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/jcu_obj.gif"));
-	public static final Image IMAGE_SPLASH = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/id-w3-sitemark-large.gif"));
 	public static final Image IMAGE_TREE_ITEM_RUNNING = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/trace_start.gif"));
 	public static final Image IMAGE_COMMAND = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/inew_obj.gif"));
 	public static final Image IMAGE_COMMAND_ITEM = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/setnext_co.gif"));
@@ -107,7 +106,6 @@ public class Constant {
 	
 	public static final Image IMAGE_NOTES = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/notes.gif"));
 
-	public static final Image IMAGE_BLUEBANNER = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/banner_blue.jpg"));
 	//public static final Image IMAGE_COOLBAR = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/banner.jpg"));
 	public static final Image IMAGE_IMPORT_SERVER   = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/import_servers.gif"));
 	public static final Image IMAGE_WEBSPHERE       = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/websphere.gif"));
@@ -121,8 +119,6 @@ public class Constant {
 	public static final Image IMAGE_FOLDER_OPENED  = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/folderOpened.gif"));	
 	public static final Image IMAGE_BROWSER = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/browser.gif"));	
 	public static final Image IMAGE_FILE    = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/file.gif"));
-	public static final Image IMAGE_WORD    = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/word.gif"));  
-	public static final Image IMAGE_EXCEL   = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/excel.gif"));
 	public static final Image IMAGE_SEARCH  = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/e_search_results_view.gif"));
 	public static final Image IMAGE_SERVER_CONNECT    = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/system_view.gif"));	
 	public static final Image IMAGE_SFTP_EXPLORER       = new Image(Display.getCurrent(), Constant.class.getClass().getResourceAsStream("/enabled/system_persp.gif"));

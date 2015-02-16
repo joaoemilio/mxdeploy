@@ -1,7 +1,5 @@
 package com.mxdeploy.swt;
 
-import java.io.IOException;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.swt.SWT;
@@ -302,7 +300,7 @@ public class MainShell {
 		gridLayout.horizontalSpacing = 0; 
 		gridLayout.verticalSpacing = 0; 
 				
-		sShell = new Shell(display,SWT.MAX | SWT.MIN | SWT.RESIZE );
+		sShell = new Shell();
 		sShell.setMaximized(true);
 		sShell.setText(Database.WORKSPACE_NAME+" - MXDeploy"); 
 		sShell.setImage(Constant.IMAGE_LOGO);

@@ -17,7 +17,7 @@ import com.mxscript.MXBeanShellException;
 public class SCPClient {
 	protected Channel channel = null;
 
-	public File getFile(SSHServiceNew ssh, String sourceDir, String sourceFile) {
+	public File getFile(SSHClient ssh, String sourceDir, String sourceFile) {
 		File ffile = null;
 		try {
 			ffile = File.createTempFile("MyFile.txt", ".tmp" );
@@ -133,7 +133,7 @@ public class SCPClient {
 		return ffile;
 	}
 		
-	public void getFile(SSHServiceNew ssh, String sourceDir, String sourceFile,
+	public void getFile(SSHClient ssh, String sourceDir, String sourceFile,
 			String destDir) {
 		String lfile = destDir + "/"+sourceFile;
 		if( destDir.endsWith("/") ){
@@ -262,7 +262,7 @@ public class SCPClient {
 
 	}
 
-	public void putFile(SSHServiceNew ssh, String sourceDir, String sourceFile,
+	public void putFile(SSHClient ssh, String sourceDir, String sourceFile,
 			String destDir) {
 
 		String lfile = destDir + "/"+sourceFile;
@@ -416,7 +416,7 @@ public class SCPClient {
 		return b;
 	}
 
-	public boolean sendFile(SSHServiceNew ssh, String sourceFilename, String destFilename) {
+	public boolean sendFile(SSHClient ssh, String sourceFilename, String destFilename) {
 		FileInputStream fis = null;
 
 		try {
@@ -486,7 +486,7 @@ public class SCPClient {
 
 	
 	public static void main(String args[]) throws SocketException, IOException, JSchException, InterruptedException, MXBeanShellException{
-		SSHServiceNew ssh = new SSHServiceNew();
+		SSHClient ssh = new SSHClient();
 		ssh.connect("localhost", "fsbsilva", "1234");
 		SCPClient scp = new SCPClient();
 		scp.sendFile(ssh, "C:/scripts/201103_SSL/access_denied.txt", "/tmp/fsbsilva/access_denied.txt");
