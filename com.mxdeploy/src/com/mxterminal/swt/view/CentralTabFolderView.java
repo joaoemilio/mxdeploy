@@ -53,7 +53,7 @@ public class CentralTabFolderView extends CTabFolder implements CTabFolder2Liste
 //		if( System.getProperty("os.name").equals("Windows XP") ){ 
 //		    setTabHeight(21);
 //		}
-		setSimple(true);
+		setSimple(false);
 		setUnselectedImageVisible(false);
 		setUnselectedCloseVisible(false); 
 		//setMaximizeVisible(true);

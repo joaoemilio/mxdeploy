@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -13,11 +11,8 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import com.mxdeploy.AccountConfig;
 import com.mxdeploy.api.domain.Database;
-import com.mxdeploy.api.domain.Server;
 import com.mxdeploy.swt.MainShell;
-import com.mxssh.ManageGateway;
 import com.mxterminal.console.ConsoleComposite;
 import com.mxterminal.console.ConsoleWin;
 import com.mxterminal.swt.util.SWTUtils;
